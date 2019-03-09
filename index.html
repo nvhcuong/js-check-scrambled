@@ -1,0 +1,45 @@
+<html>
+<head>
+<script type="text/javascript">
+const dictionary = ['cafe','face','rainy', 'book'];
+// Your implementation, feel free to use
+function solveScrambled(str) {
+   let rsArr = new Array();
+    for(let word of dictionary ) {
+        let isScrambled = true;
+        if(str.length == word.length) {
+          var countWord = makeKey(word);
+          var countStr = makeKey(str);
+          for(let s in countStr) {
+            if(countStr[s]!=countWord[s]) {
+              isScrambled=false;
+              break;
+            }
+          }
+          if (isScrambled == true) {
+            rsArr.push(word);
+          }
+        }
+    }
+  return rsArr;
+}
+
+function makeKey(string) {
+  let dict = [];
+  for (let letter of string) {
+    dict[letter] = dict[letter] || 0;
+    dict[letter]++;
+  }
+  return dict;
+}
+
+// const fruitBasket = ['banana', 'cherry', 'orange', 'apple', 'cherry', 'orange', 'apple', 'banana', 'cherry', 'orange', 'fig' ];
+// const test = fruitBasket.reduce( (tally, fruit) => {
+//   tally[fruit] = (tally[fruit] || 0) + 1 ;
+//   return tally;
+// } , {})
+
+console.log(solveScrambled("obok"));
+</script>
+</head>
+</html>
